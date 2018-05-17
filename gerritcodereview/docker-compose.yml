@@ -1,0 +1,16 @@
+version: '3.3'
+
+services:
+  gerrit:
+    image: gerritcodereview/gerrit
+    volumes:
+      - $PWD/data/git:/var/gerrit/git
+      - $PWD/data/db:/var/gerrit/db
+      - $PWD/data/index:/var/gerrit/index
+      - $PWD/data/cache:/var/gerrit/cache
+      - $PWD/data/etc:/var/gerrit/etc
+    ports:
+      - '29418:29418'
+      - '8080:8080'
+    hostname: 'gerrit'
+    #entrypoint: java -jar /var/gerrit/bin/gerrit.war init -d /var/gerrit
